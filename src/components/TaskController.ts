@@ -3,7 +3,7 @@ import { api } from "~/utils/api";
 import type { Task } from "@prisma/client";
 import getReloader from "./Reloader";
 export const TaskController = () => {
-const reload = getReloader();
+  const reload = getReloader();
 
   //----------CREATE------------
   // Create Task Mutation
@@ -42,21 +42,20 @@ const reload = getReloader();
 
   //----------DELETE-----------
   // Delete Tasks Handler
-  /* <- Delete this line
+
   const deleteTask = (task: Task) => {
-    deleteTaskMutation.mutate({  });
+    deleteTaskMutation.mutate({ id: task.id });
   };
   //Delete Tasks Mutation
   const deleteTaskMutation = api.task.delete.useMutation({
     onSuccess: reload,
   });
-   Delete this line -> */
-  
+
   //---------------------------
 
   return {
     handleToggleCompleted: updateTask,
-    // handleDelete: deleteTask,
+    handleDelete: deleteTask,
     getFilteredTasks: getTasks,
     handleSubmit: createTask,
   };
